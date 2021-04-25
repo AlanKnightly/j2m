@@ -1,5 +1,6 @@
 var app = require('json-to-markdown');
-const copy = require('copy-to-clipboard')
+const clipboardy = require('clipboardy');
+
 var columns = [
     {key: 'a', label: '字段'},
     {key: 'b', label: '类型'},
@@ -44,5 +45,6 @@ const object= Object.keys(body).map(k=>({
 }))
 
 var tableMdString = app(object, columns);
-copy(tableMdString)
+clipboardy.writeSync(tableMdString);
+
 console.log(tableMdString)
